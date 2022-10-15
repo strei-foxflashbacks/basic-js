@@ -25,6 +25,8 @@ const getCommonCharacterCount = (s1, s2) => {
   return count
 }
 
+// commit message edit just in case
+
 module.exports = {
   getCommonCharacterCount
 };
