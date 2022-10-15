@@ -26,6 +26,9 @@ function countCats(matrix) {
   return count
 }
 
+// commit message edit just in case
+
+
 module.exports = {
   countCats
 };
