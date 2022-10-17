@@ -28,6 +28,11 @@ function getDNSStats(domains) {
   domains.forEach(element => {
     domainSplit.push(element.split('.').reverse())
   })
+  for (let i = 0; i < domainSplit.length; i++) {
+    for (let j = 0; j < domainSplit[i].length; j++) {
+      j !== 0 ? domainSplit[i][j] = domainSplit[i][j - 1] + '.' + domainSplit[i][j] : domainSplit[i][j]
+    }
+  }
   const flattened = [].concat(...domainSplit)
   for (let dom of flattened) {
     if (result[`.${dom}`] === undefined) {
@@ -37,26 +42,7 @@ function getDNSStats(domains) {
     }
   }
   return result
-  // const newResult = {};
-  // for (let i = 1; i < Object.keys(result).length; i++) {
-
-  //     Object.keys(result).forEach(key => {
-  //         const value = result[key];
-
-  //         if (key === Object.keys(result)[i]) {
-  //             newResult[Object.keys(result)[i - 1] + Object.keys(result)[i]] = value;
-  //         } else {
-  //             newResult[key] = value;
-  //         }
-  //     });
-  //   }
-  //   return newResult;
 }
-console.log(getDNSStats([
-    'code.yandex.ru',
-    'music.yandex.ru',
-    'yandex.ru'
-   ]))
 
 module.exports = {
   getDNSStats
